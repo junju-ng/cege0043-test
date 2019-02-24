@@ -4,8 +4,31 @@ function startDataUpload(){
 	var module = document.getElementById("module").value; //get module
 	// create postString with name surname and module
 	var postString = "name=" + name + "&surname=" + surname + "&module=" + module;
-	alert(postString);
+	
+	// get checkbox values - separate with a | so they can be split later on if needed
+	var checkString = "";
+	for (var i=1; i<5; i++){
+		if (document.getElementById("check"+i).checked === true){
+			checkString = checkString + document.getElementById("check"+i).value + "||"
+		}
+	}
+		postString = postString + "&moduleslist=" + checkString;
+
+	
+	// get radio button values
+	if (document.getElementById("morning").checked){
+		postString = postString + "&lecturetime=morning";
+	}
+	if (document.getElementById("afternoon").checked){
+		postString = postString + "&lecturetime=afternoon";
+	}
+	
+	// get select box values
+	var language = document.getElementById("languageselectbox").value;
+	postString = postString + "&language=" + language;
+	
 	processData(postString); //call processData so it actually runs
+	
 }
 
 
