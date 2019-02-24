@@ -13,7 +13,6 @@ function startDataUpload(){
 		}
 	}
 		postString = postString + "&moduleslist=" + checkString;
-
 	
 	// get radio button values
 	if (document.getElementById("morning").checked){
@@ -26,6 +25,11 @@ function startDataUpload(){
 	// get select box values
 	var language = document.getElementById("languageselectbox").value;
 	postString = postString + "&language=" + language;
+	
+	// get coordinates
+	var latitude = document.getElementById("latitude").value;
+	var longitude = document.getElementById("longitude").value;
+	postString = postString + "&latitude=" + latitude + "&longitude=" + longitude;
 	
 	processData(postString); //call processData so it actually runs
 	
