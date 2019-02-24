@@ -5,6 +5,7 @@ function startDataUpload(){
 	// create postString with name surname and module
 	var postString = "name=" + name + "&surname=" + surname + "&module=" + module;
 	alert(postString);
+	processData(postString); //call processData so it actually runs
 }
 
 
@@ -17,7 +18,7 @@ function processData(postString){
 	client.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	client.onreadystatechange = dataUploaded;
 	client.send(postString);
-p}
+}
 
 // create code to wait for response from server and process response once it is received
 function dataUploaded(){
