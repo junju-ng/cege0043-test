@@ -7,3 +7,24 @@ function startDataUpload(){
 	alert(postString);
 }
 
+
+var client; // global variable to hold AJAX request
+
+// create AJAX request
+function processData(postString){
+	client = new XMLHttpRequest();
+	client.open('POST','http://developer.cege.ucl.ac.uk:30296/reflectData',true);
+	client.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	client.onreadystatechange = dataUploaded;
+	client.send(postString);
+p}
+
+// create code to wait for response from server and process response once it is received
+function dataUploaded(){
+	// function listens for server to say data is readyState
+	if (client.readyState === 4){
+		// change data upload result DIV to show response
+		document.getElementById("dataUploadResult").innerHTML = client.responseText;
+	}
+}
+
